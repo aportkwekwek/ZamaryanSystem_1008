@@ -5,7 +5,9 @@ Public Class forpassword
     Dim con As New MySqlConnection
     Dim com As New MySqlCommand
     Dim dr As MySqlDataReader
-    Dim dt1237 As New DataTable
+    'Dim dt1237 As New DataTable
+    ' Dim tweqw As Integer
+
 
 
     Private Sub MaterialRaisedButton1_Click(sender As Object, e As EventArgs) Handles MaterialRaisedButton1.Click
