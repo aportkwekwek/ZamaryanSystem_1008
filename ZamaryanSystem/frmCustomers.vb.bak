@@ -1,0 +1,361 @@
+﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data
+
+Public Class frmCustomers
+
+    Dim sqlcon As New MySqlConnection
+    Dim sqlcmd As New MySqlCommand
+    Dim dr As MySqlDataReader
+    Dim sqlda As New MySqlDataAdapter
+    Dim dt As DataTable
+    Dim lvi As ListViewItem
+   
+    Private Sub frmCustomers_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
+        frmMain.Enabled = True
+        frmMain.Focus()
+
+    End Sub
+
+    Private Sub frmCustomers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        currenttimer.Start()
+
+
+    End Sub
+
+    
+    Private Function ExecuteScalar(query As String)
+
+        Try
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            sqlcmd.CommandText = query
+            sqlcmd.Connection = sqlcon
+
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+        End Try
+
+        Return 0
+
+
+    End Function
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        sqlcon.Close()
+        Me.Close()
+
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        Me.WindowState = FormWindowState.Minimized
+
+    End Sub
+
+    Private Sub MaterialFlatButton1_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton1.Click
+
+        lvCustomers.Items.Clear()
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select customerid,customername,customeraddress,customerzip,customerphone,customercontactperson,customertin from customers"
+
+            Dim dt3 As New DataTable
+
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt3)
+
+            Dim lv As New ListViewItem
+
+            Dim i As Integer
+
+            While i <= dt3.Rows.Count - 1
+
+                lv = lvCustomers.Items.Add(dt3.Rows(i).Item(0))
+                lv.SubItems.Add(dt3.Rows(i).Item(1))
+                lv.SubItems.Add(dt3.Rows(i).Item(2))
+                lv.SubItems.Add(dt3.Rows(i).Item(3))
+                lv.SubItems.Add(dt3.Rows(i).Item(4))
+                lv.SubItems.Add(dt3.Rows(i).Item(5))
+                lv.SubItems.Add(dt3.Rows(i).Item(6))
+
+                i += 1
+
+            End While
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+        End Try
+    End Sub
+
+    Private Sub MaterialFlatButton4_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton4.Click
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select * from customers where customername = '" & txtCompanyProfile.Text & "'"
+
+            Dim dt5 As New DataTable
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt5)
+
+            If dt5.Rows.Count = 1 Then
+
+                MessageBox.Show("The customer is already listed in the database", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                sqlcon.Close()
+                Exit Sub
+
+            End If
+
+            Dim sql As String
+
+            sql = "INSERT INTO customers(customername,customeraddress,customerzip,customerphone,customerfax,customercontactperson,customeremail,customertin,termsofAgreement) VALUES('" & txtCompanyProfile.Text & "','" & txtCompanyAddress.Text & "','" & txtzip.Text & "', '" & txtPhoneNumber.Text & "', '" & txtfax.Text & "', '" & txtcontactperson.Text & "', '" & txtemail.Text & "', '" & txttin.Text & "'," & txtTerms.Text & ")"
+            sqlcmd = New MySqlCommand(sql, sqlcon)
+            sqlcmd.ExecuteNonQuery()
+
+            MessageBox.Show("Information Successfully Saved!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            btnClearItem.PerformClick()
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+        End Try
+
+    End Sub
+
+    Private Sub btnClearItem_Click(sender As Object, e As EventArgs) Handles btnClearItem.Click
+
+        txtCompanyAddress.Clear()
+        txtCompanyProfile.Clear()
+        txtcontactperson.Clear()
+        txtemail.Clear()
+        txtfax.Clear()
+        txtPhoneNumber.Clear()
+        txtTerms.Clear()
+        txttin.Clear()
+        txtzip.Clear()
+
+
+
+    End Sub
+
+    Private Sub MaterialFlatButton2_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton2.Click
+        sqlcon.Close()
+        Me.Close()
+        frmMain.Focus()
+
+    End Sub
+
+
+    Private Sub txtsearchcustomer_TextChanged(sender As Object, e As EventArgs)
+
+        Dim dtooo As New DataTable
+        Dim col As New AutoCompleteStringCollection
+
+        dtooo.Clear()
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            'sqlda = New MySqlDataAdapter("Select  customername as 'Name' from customers where customername like '%' '" & txtsearchcustomer.Text & "' '%'", sqlcon)
+            'sqlda.Fill(dtooo)
+
+
+            'Dim i As Integer
+
+            'For i = 0 To dtooo.Rows.Count - 1
+            '    col.Add(dtooo.Rows(i).Item(0).ToString)
+            'Next
+
+            'txtsearchcustomer.AutoCompleteCustomSource = col
+
+
+            Dim dt9 As New DataTable
+
+
+            sqlda = New MySqlDataAdapter("Select customerid as 'Customer ID',customername as 'Name', customeraddress as 'Address', customerzip as 'Zip',customerphone as 'Phone Number', customerfax as 'Fax', customercontactperson as 'Contact Person',customeremail as 'Email', customertin as 'Tin', termsofAgreement as 'Terms' from customers where customername like '%" & txtsearchcustomer.Text & "%'", sqlcon)
+            sqlda.Fill(dt9)
+
+            dgveditcustomer.DataSource = dt9
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+        End Try
+
+
+
+    End Sub
+
+    Private Sub btnsaveedit_Click(sender As Object, e As EventArgs) Handles btnsaveedit.Click
+
+
+        If btnsaveedit.Text = "Edit" Then
+
+
+
+            BunifuTransition1.HideSync(dgveditcustomer, True, BunifuAnimatorNS.Animation.Leaf)
+            BunifuTransition1.ShowSync(pnleditcustomer, False, BunifuAnimatorNS.Animation.Leaf)
+
+            txtidedit.Text = dgveditcustomer.SelectedCells.Item(0).Value
+            txtnameedit.Text = dgveditcustomer.SelectedCells.Item(1).Value
+            txtaddedit.Text = dgveditcustomer.SelectedCells.Item(2).Value
+            txtzipedit.Text = dgveditcustomer.SelectedCells.Item(3).Value
+            txtphoneedit.Text = dgveditcustomer.SelectedCells.Item(4).Value
+            txtfaxedit.Text = dgveditcustomer.SelectedCells.Item(5).Value
+            txtcpedit.Text = dgveditcustomer.SelectedCells.Item(6).Value
+            txtemailedit.Text = dgveditcustomer.SelectedCells.Item(7).Value
+            txttinedit.Text = dgveditcustomer.SelectedCells.Item(8).Value
+            txttermsedit.Text = dgveditcustomer.SelectedCells.Item(9).Value
+
+            btnsaveedit.Text = "Save"
+
+
+        ElseIf btnsaveedit.Text = "Save" Then
+            If sqlcon.State = ConnectionState.Closed Then
+                sqlcon.Open()
+            End If
+            sqlcmd = New MySqlCommand("UPDATE customers SET customername='" & txtnameedit.Text & "',customeraddress='" & txtaddedit.Text & "',customerzip='" & txtzipedit.Text & "',customerphone='" & txtphoneedit.Text & "',customerfax='" & txtfaxedit.Text & "',customercontactperson='" & txtcpedit.Text & "',customeremail='" & txtemailedit.Text & "',customertin='" & txttinedit.Text & "',termsofAgreement='" & txttermsedit.Text & "' WHERE customerid='" & txtidedit.Text & "'", sqlcon)
+            sqlcmd.ExecuteNonQuery()
+            MessageBox.Show("Information updated.", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            BunifuTransition1.ShowSync(dgveditcustomer, True, BunifuAnimatorNS.Animation.Leaf)
+            BunifuTransition1.HideSync(pnleditcustomer, False, BunifuAnimatorNS.Animation.Leaf)
+            btnsaveedit.Text = "Edit"
+            sqlcon.Close()
+
+            btnclearedit.PerformClick()
+
+
+        End If
+    End Sub
+
+    Private Sub btnclearedit_Click(sender As Object, e As EventArgs) Handles btnclearedit.Click
+        dgveditcustomer.Visible = True
+        pnleditcustomer.Visible = False
+        Dim control As Control
+
+        For Each control In Panel1.Controls
+            If (control.GetType() Is GetType(TextBox)) Then
+                Dim textbox As TextBox = CType(control, TextBox)
+                textbox.Clear()
+            End If
+        Next
+
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        If Me.WindowState = FormWindowState.Maximized Then
+            Me.WindowState = FormWindowState.Normal
+        ElseIf Me.WindowState = FormWindowState.Normal Then
+            Me.WindowState = FormWindowState.Maximized
+        End If
+    End Sub
+
+    Private Sub txtPhoneNumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhoneNumber.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtcontactperson_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtcontactperson.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+                e.KeyChar = Nothing
+        End Select
+    End Sub
+    Private Sub txtzip_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtzip.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+    Private Sub txttin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttin.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+    Private Sub txtfax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtfax.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+    Private Sub txtTerms_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTerms.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 47 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub MaterialFlatButton3_Click_1(sender As Object, e As EventArgs)
+
+
+        
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub txtcpedit_Click(sender As Object, e As EventArgs) Handles txtcpedit.Click
+
+    End Sub
+
+    Private Sub MaterialTabSelector1_Click(sender As Object, e As EventArgs) Handles MaterialTabSelector1.Click
+
+    End Sub
+End Class

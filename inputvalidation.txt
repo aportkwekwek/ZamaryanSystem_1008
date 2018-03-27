@@ -1,0 +1,18 @@
+Dim NotAllowed As String = "~`@%^&+={[}]()!:,;'><?/|\-#+"
+
+        'Allowed letters numbers and ( _ $ *)
+
+        If e.KeyChar <> ControlChars.Back = True Then
+            If NotAllowed.IndexOf(e.KeyChar) = -1 = False Then
+                e.Handled = True
+            End If
+        End If
+        Dim boom As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+        'Allowed letters numbers and ( _ $ *)
+
+        If e.KeyChar <> ControlChars.Back = True Then
+            If boom.IndexOf(e.KeyChar) = -1 = False Then
+                e.Handled = True
+            End If
+        End If

@@ -1,0 +1,169 @@
+﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data
+
+Public Class frmChartofAccounts
+
+
+    Dim sqlcon As New MySqlConnection
+    Dim sqlda As New MySqlDataAdapter
+    Dim sqlcmd As New MySqlCommand
+
+    Public Sub charts()
+        lvAccountsChart.Items.Clear()
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select accountcode,accountname,accountgroup from chartofaccounts order by accountcode"
+            Dim i As Integer
+
+            Dim dt As New DataTable
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt)
+
+            Dim itm As ListViewItem
+
+            While i <= dt.Rows.Count - 1
+
+                itm = lvAccountsChart.Items.Add(dt.Rows(i).Item(0))
+                itm.SubItems.Add(dt.Rows(i).Item(1))
+                itm.SubItems.Add(dt.Rows(i).Item(2))
+
+                i += 1
+
+            End While
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
+    Private Sub MaterialFlatButton1_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton1.Click
+        charts()
+
+    End Sub
+    'Public Function ValidateTableData(ByVal sql As String)
+    '    Dim da As New MySqlDataAdapter
+    '    Dim cmd As New MySqlCommand
+    '    Dim dr As MySqlDataReader
+    '    Dim publicatable As New DataTable
+
+    '    ValidateTableData = False
+
+
+    '    Try
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+
+
+    '        cmd = New MySqlCommand(sql, sqlcon)
+    '        dr = cmd.ExecuteReader
+    '        If dr.Read = True Then
+    '            Return True
+    '        End If
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    Finally
+    '        cmd.Dispose()
+    '        sqlcon.Close()
+    '    End Try
+    'End Function
+    Private Sub MaterialFlatButton4_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton4.Click
+        Try
+
+            'If ValidateTableData("SELECT * FROM chartofaccounts WHERE accountname = '" & txtAccName.Text & "'") = True Then
+            '    MessageBox.Show("Accountname already exist !", "System error", MessageBoxButtons.OK)
+            '    txtAccName.Clear()
+
+            '    Exit Sub
+            'End If
+            'If ValidateTableData("SELECT * FROM chartofaccounts WHERE accountcode = '" & txtAccCode.Text & "'") = True Then
+            '    MessageBox.Show("Accountcode already exist !", "System error", MessageBoxButtons.OK)
+            '    txtAccCode.Clear()
+            '    Exit Sub
+            'End If
+
+            sqlcon.ConnectionString = strconnection()
+                sqlcon.Open()
+
+            Dim qry As String
+         
+            qry = "Insert into chartofaccounts(accountname,accountcode,accountgroup) values ('" & txtAccName.Text & "','" & txtAccCode.Text & "','" & cbaccgroup.selectedValue & "')"
+            sqlcmd = New MySqlCommand(qry, sqlcon)
+            sqlcmd.ExecuteNonQuery()
+
+            MessageBox.Show("Information successfully uploaded!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            btnClearItem.PerformClick()
+
+        Catch ex As MySqlException
+            If (ex.Number = "1062") Then
+                MsgBox("Account code and account name must be unique! (" & ex.Message.Replace("key 'accountcode'", "account code").Replace("key 'accountname'", "account name") & ")")
+            Else
+                MessageBox.Show(ex.Message)
+            End If
+        Finally
+            sqlcon.Close()
+        End Try
+        charts()
+
+    End Sub
+
+    Private Sub btnClearItem_Click(sender As Object, e As EventArgs) Handles btnClearItem.Click
+        txtAccCode.Clear()
+        txtAccName.Clear()
+
+    End Sub
+
+
+    Private Sub txtAccGroup_onItemSelected(sender As Object, e As EventArgs) Handles cbaccgroup.onItemSelected
+    End Sub
+
+    Private Sub frmChartofAccounts_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
+        frmMain.Enabled = True
+        frmMain.Focus()
+        frmJournalEntry.ModifyComboBox("Select accountname from chartofaccounts order by accountname asc", frmJournalEntry.cbaccountname)
+
+
+
+    End Sub
+
+    Private Sub frmChartofAccounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ModifyComboBox("SELECT DISTINCT accountgroup FROM chartofaccounts", cbaccgroup)
+        cbaccgroup.selectedIndex = 0
+    End Sub
+
+    Private Sub btnaddaccgroup_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Me.Close()
+
+    End Sub
+
+    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
+
+    End Sub
+
+    Private Sub MaterialTabSelector1_Click(sender As Object, e As EventArgs) Handles MaterialTabSelector1.Click
+
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+
+    End Sub
+
+    Private Sub lvAccountsChart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvAccountsChart.SelectedIndexChanged
+
+    End Sub
+End Class

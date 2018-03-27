@@ -1,0 +1,13 @@
+dim existing as double 
+
+dim newRunningBalance as double
+
+if cell(1) = 0
+
+newrunningbalance = existing - value cell(2)
+
+else
+
+newrunningbalance = existing + value cell(1) 
+
+insert 

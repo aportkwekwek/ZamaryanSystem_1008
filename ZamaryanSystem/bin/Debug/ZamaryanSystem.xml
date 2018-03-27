@@ -1,0 +1,544 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ZamaryanSystem
+</name>
+</assembly>
+<members>
+<member name="T:ZamaryanSystem.CheckDataSet.checksDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ZamaryanSystem.CheckDataSet.checksRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ZamaryanSystem.CheckDataSet.checksRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ZamaryanSystem.CheckDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._1_1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._111">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._111222">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2cart">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2coin">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2dollar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2financial">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2financial1111">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2global">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2handshake">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2icon_user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2presentation__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2presentation__2_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2store">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2tax">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._2teamwork">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._3">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._3111">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._4">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._6">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._7">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._8">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._9">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._exit">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources._global">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Acc1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Acc11">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Acc2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.brain_process">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.buy">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.cart">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Disbursement_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Disbursement_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Reciept_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Reciept_Back1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Reciept_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Cash_Reciept_Front1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Chart_of_Accounts_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Chart_of_Accounts_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Check_Writer1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Check_Writer2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Close_White">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.coin">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Costumer_Back_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Costumer_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.crm1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.crm2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.data">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.discount">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.dollar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.ecomerce1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.ecomerce2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Edit_Profile_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Edit_Profile_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.employee">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.finance1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.finance2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.financial">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.handshake">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.hrms1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.hrms2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icon_user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_cancel_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_customer_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_lock_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_lock_48__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_login_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_maximize_window_filled_48__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_minimize_window_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_speedometer_96">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.icons8_unavailable_48">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Inventory_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Inventory_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Inventory_man1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Inventory_man2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Journal_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Journal_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Logout_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Logout_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.management">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Maximize_White">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Minimize_White">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.name">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.navbg">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.network">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.notebook">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.open_box_blue">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.opened_door_aperture">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.opened_door_aperture222">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.opened_door_aperture2221">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.partner">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.presentation">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.presentation__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.presentation__2_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.purchase1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.purchase2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.purchases_and_Billings_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.purchases_and_Billings_2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Purchases_Back_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Purchases_Front_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Report_Back">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Report_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Sales_Back_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Sales_Front">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.sales1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.sales2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.settings">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.speedometer">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.statistics">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.store">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Suppliers_Back1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Suppliers_Front_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.tax">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.teamwork">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.warehouse">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.warehouse1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.warehouse2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.z">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.z1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.z2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Zamaryan">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.Zzamaryan">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.ZZamaryan_Black">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ZamaryanSystem.My.Resources.Resources.ZZZZamaryan">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:ZamaryanSystem.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

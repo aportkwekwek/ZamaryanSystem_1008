@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>MaterialSkin.Net4</id>
+    <version>1.0.0</version>
+    <title>Material Skin .NET 4.0</title>
+    <authors>Giancarlos Salas</authors>
+    <owners>Giancarlos Salas</owners>
+    <projectUrl>https://github.com/giansalex/MaterialSkin</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Matrial Skin .NET 4</description>
+    <summary />
+    <language>en-US</language>
+    <tags>material-design</tags>
+  </metadata>
+</package>

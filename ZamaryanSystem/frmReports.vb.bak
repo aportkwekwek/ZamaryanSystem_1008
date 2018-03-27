@@ -1,0 +1,773 @@
+﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data
+
+Public Class frmReports
+
+    Dim sqlcon As New MySqlConnection
+    Dim sqlda As New MySqlDataAdapter
+    Dim sqlcmd As New MySqlCommand
+    Dim a As Integer
+    Dim gross2, ga2 As Integer
+
+
+
+    Private Sub MaterialFlatButton1_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton1.Click
+        Me.Close()
+
+    End Sub
+
+    ' Public Function getsalesinvoicereport()
+
+    '    lvsalesinvoice.Items.Clear()
+
+
+    '    Try
+
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+    '        Dim qry As String
+
+    '        qry = "Select * from salesinvoice"
+
+    '        Dim dtk1 As New DataTable
+
+    '        sqlda = New MySqlDataAdapter(qry, sqlcon)
+    '        sqlda.Fill(dtk1)
+
+    '        Dim i As Integer
+
+    '        While i <= dtk1.Rows.Count - 1
+    '            Dim itm As ListViewItem
+
+    '            itm = lvsalesinvoice.Items.Add(dtk1.Rows(i).Item(0))
+    '            itm.SubItems.Add((dtk1.Rows(i).Item(2)))
+    '            itm.SubItems.Add(dtk1.Rows(i).Item(3))
+    '            itm.SubItems.Add(dtk1.Rows(i).Item(4))
+    '            itm.SubItems.Add(dtk1.Rows(i).Item(5))
+    '            itm.SubItems.Add(dtk1.Rows(i).Item(6))
+    '            itm.SubItems.Add(dtk1.Rows(i).Item(7))
+    '            'itm.SubItems.Add(dtk1.Rows(i).Item(8))
+    '            'itm.SubItems.Add(FormatNumber(dtk1.Rows(i).Item(5)))
+    '            ' itm.SubItems.Add(Format(dtk1.Rows(i).Item(3)))
+
+    '            i += 1
+
+    '        End While
+
+
+
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+
+    '        sqlcon.Close()
+
+    '    End Try
+
+    '    Return lvsalesinvoice
+
+
+    'End Function
+
+    ''Get Billing Statement
+
+    'Public Function getbillingstatement()
+
+    '    lvbilling.Items.Clear()
+
+
+    '    Try
+
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+    '        Dim qry As String
+
+    '        qry = "Select * from billings"
+
+    '        Dim dtk4 As New DataTable
+
+    '        sqlda = New MySqlDataAdapter(qry, sqlcon)
+    '        sqlda.Fill(dtk4)
+
+    '        Dim i As Integer
+
+    '        While i <= dtk4.Rows.Count - 1
+    '            Dim itm As ListViewItem
+
+    '            itm = lvbilling.Items.Add(dtk4.Rows(i).Item(0))
+    '            itm.SubItems.Add((dtk4.Rows(i).Item(1)))
+    '            itm.SubItems.Add((dtk4.Rows(i).Item(2)))
+    '            itm.SubItems.Add((dtk4.Rows(i).Item(3)))
+
+    '            'itm.SubItems.Add(dtk1.Rows(i).Item(8))
+    '            'itm.SubItems.Add(FormatNumber(dtk1.Rows(i).Item(5)))
+    '            ' itm.SubItems.Add(Format(dtk1.Rows(i).Item(3)))
+
+    '            i += 1
+
+    '        End While
+
+
+
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+
+    '        sqlcon.Close()
+
+    '    End Try
+
+    '    Return lvbilling
+
+
+    'End Function
+
+    'Public Function getrecievingreport()
+
+    '    dgvrecievingreport.Items.Clear()
+
+
+    '    Try
+
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+    '        Dim qry As String
+
+    '        qry = "Select purchaseorder.poid , receivingreport.datedelivered , receivingreport.total , receivingreport.status from receivingreport , purchaseorder group by purchaseorder.poid"
+
+    '        Dim dtk22 As New DataTable
+
+    '        sqlda = New MySqlDataAdapter(qry, sqlcon)
+    '        sqlda.Fill(dtk22)
+
+    '        Dim i As Integer
+
+    '        While i <= dtk22.Rows.Count - 1
+    '            Dim itm As ListViewItem
+
+    '            itm = dgvrecievingreport.Items.Add(dtk22.Rows(i).Item(0))
+    '            itm.SubItems.Add((dtk22.Rows(i).Item(1)))
+    '            itm.SubItems.Add((dtk22.Rows(i).Item(2)))
+    '            itm.SubItems.Add((dtk22.Rows(i).Item(3)))
+
+    '            'itm.SubItems.Add(dtk1.Rows(i).Item(8))
+    '            'itm.SubItems.Add(FormatNumber(dtk1.Rows(i).Item(5)))
+    '            ' itm.SubItems.Add(Format(dtk1.Rows(i).Item(3)))
+
+    '            i += 1
+
+    '        End While
+
+
+
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+
+    '        sqlcon.Close()
+
+    '    End Try
+
+    '    Return dgvrecievingreport
+
+
+    'End Function
+
+    'Public Function getpurchasereport()
+
+    '    lvpurchase.Items.Clear()
+
+
+    '    Try
+
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+    '        Dim qry As String
+
+    '        qry = "Select * from purchaseorder"
+
+    '        Dim dtk2 As New DataTable
+
+    '        sqlda = New MySqlDataAdapter(qry, sqlcon)
+    '        sqlda.Fill(dtk2)
+
+    '        Dim i As Integer
+
+    '        While i <= dtk2.Rows.Count - 1
+    '            Dim itm As ListViewItem
+
+    '            itm = lvpurchase.Items.Add(dtk2.Rows(i).Item(0))
+    '            itm.SubItems.Add((dtk2.Rows(i).Item(1)))
+    '            itm.SubItems.Add(dtk2.Rows(i).Item(2))
+
+    '            'itm.SubItems.Add(dtk1.Rows(i).Item(8))
+    '            'itm.SubItems.Add(FormatNumber(dtk1.Rows(i).Item(5)))
+    '            ' itm.SubItems.Add(Format(dtk1.Rows(i).Item(3)))
+
+    '            i += 1
+
+    '        End While
+
+
+
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+
+    '        sqlcon.Close()
+
+    '    End Try
+
+    '    Return lvpurchase
+
+
+    'End Function
+
+    'Public Function getcashreciept()
+
+    '    lvcashreciept.Items.Clear()
+
+
+    '    Try
+
+    '        sqlcon.ConnectionString = strconnection()
+    '        sqlcon.Open()
+
+    '        Dim qry As String
+
+    '        qry = "Select * from cashreceipts"
+
+    '        Dim dtk2 As New DataTable
+
+    '        sqlda = New MySqlDataAdapter(qry, sqlcon)
+    '        sqlda.Fill(dtk2)
+
+    '        Dim i As Integer
+
+    '        While i <= dtk2.Rows.Count - 1
+    '            Dim itm As ListViewItem
+
+    '            itm = lvcashreciept.Items.Add(dtk2.Rows(i).Item(0))
+    '            itm.SubItems.Add((dtk2.Rows(i).Item(1)))
+    '            itm.SubItems.Add(dtk2.Rows(i).Item(5))
+
+    '            'itm.SubItems.Add(dtk1.Rows(i).Item(8))
+    '            'itm.SubItems.Add(FormatNumber(dtk1.Rows(i).Item(5)))
+    '            ' itm.SubItems.Add(Format(dtk1.Rows(i).Item(3)))
+
+    '            i += 1
+
+    '        End While
+
+
+
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+
+    '        sqlcon.Close()
+
+    '    End Try
+
+    '    Return lvcashreciept
+
+
+    'End Function
+
+    Private Sub getincomestatement()
+
+        Try
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select chartofaccounts.accountcode as 'Account Code',chartofaccounts.accountname as 'Account Name',sum(journalentry.journaldebit) - sum(journalentry.journalcredit) as Balance from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid where YEAR(journalentry.journaldate) = YEAR(curdate()) and chartofaccounts.accountname != 'Retained Earnings' and (chartofaccounts.accountgroup = 'Profit' or chartofaccounts.accountgroup = 'General & Administrative Expenses') group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+            Dim dt1 As New DataTable
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt1)
+
+            dgvincomestatement.DataSource = dt1
+
+
+        Catch ex As Exception
+
+
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+
+        End Try
+    End Sub
+
+
+  
+    Public Function gross1()
+        Try
+
+            totgross.Text = ExecuteScalar("Select Distinct(Select sum(journalentry.journaldebit) - sum(journalentry.journalcredit) as 'Profit' from journalentry inner join chartofaccounts on journalentry.accountid = chartofaccounts.accountid where chartofaccounts.accountgroup ='Profit' GROUP by chartofaccounts.accountgroup) as 'Profit'").ToString
+            If totgross.Text = "" Then
+                totgross.Text = 0
+            End If
+            gross1 = totgross.Text
+
+        Catch ex As Exception
+
+
+            MsgBox(ex.Message)
+        End Try
+
+    End Function
+
+
+    Public Function GA()
+
+        ga2 = ExecuteScalar("Select sum(journalentry.journaldebit) - sum(journalentry.journalcredit) as 'Expenses' from journalentry inner join chartofaccounts on journalentry.accountid = chartofaccounts.accountid where chartofaccounts.accountgroup ='General & Administrative Expenses' group by chartofaccounts.accountgroup")
+        ga2= If(IsDBNull(ga2), "0", ga2)
+totga.Text = ga2
+
+    End Function
+
+
+    Public Function getLedgerType()
+
+        cmbReportType.Clear()
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select accountid,accountname from chartofaccounts order by accountname asc"
+
+            Dim dt As New DataTable
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt)
+
+            Dim i As Integer
+
+            While i <= dt.Rows.Count - 1
+
+                cmbReportType.AddItem(dt.Rows(i).Item(1))
+
+                i += 1
+
+            End While
+
+        Catch ex As Exception
+
+            MsgBox("catch 4")
+            MessageBox.Show(ex.Message)
+
+        Finally
+
+            sqlcon.Close()
+
+        End Try
+
+        Return cmbReportType
+
+    End Function
+
+
+    Private Sub MaterialFlatButton5_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton5.Click
+
+        Dim datefrom, dateto As Date
+
+        datefrom = dtpFrom.Value
+        dateto = dtpTo.Value
+
+        If dateto < datefrom Then
+
+            MessageBox.Show("Invalid Date", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            Exit Sub
+
+        End If
+
+        Try
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            qry = "Select journalentry.journaldate as Date,journalentry.source as Source,journalentry.source2 as 'Reference Number',journal.journaldesc as 'Description', journalentry.journaldebit as 'Debit', journalentry.journalcredit as 'Credit',runningBal as 'Balance' from journal inner join journalentry on journal.journalid = journalentry.journalid inner join chartofaccounts on journalentry.accountid = chartofaccounts.accountid where chartofaccounts.accountname ='" & cmbReportType.selectedValue & "'"
+
+            Dim dt1 As New DataTable
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt1)
+
+            dgvLedger.DataSource = dt1
+
+            dgvLedger.Columns(0).DefaultCellStyle.Format = "dd-MM-yyyy"
+            dgvLedger.Columns(3).DefaultCellStyle.Format = "###,###.##"
+            dgvLedger.Columns(4).DefaultCellStyle.Format = "###,###.##"
+
+        Catch ex As Exception
+
+            MsgBox("catch 5")
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+
+        End Try
+    End Sub
+
+    Private Sub frmReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        getLedgerType()
+        getincomestatement()
+        gross1()
+        GA()
+        Dim totalha As Integer
+
+        totalha = gross2 + ga2
+        net.Text = totalha
+
+
+        'getpurchasereport()
+        'getsalesinvoicereport()
+        'getbillingstatement()
+        'getrecievingreport()
+        'getcashreciept()
+
+        '    getLedgerTypeid()
+    End Sub
+
+    Private Sub MaterialFlatButton3_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton3.Click
+        Try
+
+
+            lvTrialBalance.Items.Clear()
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+            Dim dt2 As New DataTable
+            qry = "Select chartofaccounts.accountcode as 'Account Code',chartofaccounts.accountname as 'Account Name',sum(journalentry.journaldebit) - sum(journalentry.journalcredit) as Balance from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid where chartofaccounts.accountname != 'Retained Earnings' and chartofaccounts.accountgroup != 'General & Administrative Expenses' and chartofaccounts.accountgroup != 'Profit' group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+            'or chartofaccounts.accountname != 'Sales' or chartofaccounts.accountname != 'Cost of Sales'
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt2)
+
+            Dim i As Integer
+
+
+            Dim lvTrialBal As ListViewItem
+
+            While i <= dt2.Rows.Count - 1
+
+                lvTrialBal = lvTrialBalance.Items.Add(dt2.Rows(i).Item(0))
+                lvTrialBal.SubItems.Add(dt2.Rows(i).Item(1))
+                lvTrialBal.SubItems.Add(dt2.Rows(i).Item(2))
+                i += 1
+
+            End While
+
+            ''Get expenses per year
+
+            Dim qrystr As String
+
+            qrystr = "Select chartofaccounts.accountcode as 'Account Code',chartofaccounts.accountname as 'Account Name',sum(journalentry.journaldebit) - sum(journalentry.journalcredit) as Balance from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid where YEAR(journalentry.journaldate) = YEAR(curdate()) and chartofaccounts.accountname != 'Retained Earnings' and (chartofaccounts.accountgroup = 'Profit' or chartofaccounts.accountgroup = 'General & Administrative Expenses') group by chartofaccounts.accountcode, chartofaccounts.accountname"
+            Dim l As Integer
+            Dim dt124e As New DataTable
+
+            sqlda = New MySqlDataAdapter(qrystr, sqlcon)
+            sqlda.Fill(dt124e)
+
+            While l <= dt124e.Rows.Count - 1
+
+                lvTrialBal = lvTrialBalance.Items.Add(dt124e.Rows(l).Item(0))
+                lvTrialBal.SubItems.Add(dt124e.Rows(l).Item(1))
+                lvTrialBal.SubItems.Add(dt124e.Rows(l).Item(2))
+
+                l += 1
+
+            End While
+
+
+            '================
+
+
+
+            ''Retained Earnings
+
+            Dim qry1 As String
+
+            Dim dt12121 As New DataTable
+
+            qry1 = "Select chartofaccounts.accountcode, chartofaccounts.accountname, ifnull(sum(journalentry.journaldebit) - sum(journalentry.journalcredit),0) as Balance from journalentry inner join chartofaccounts on journalentry.accountid = chartofaccounts.accountid where chartofaccounts.accountname = 'Retained Earnings' and year(journalentry.journaldate) < year(curdate()) group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+            sqlda = New MySqlDataAdapter(qry1, sqlcon)
+            sqlda.Fill(dt12121)
+
+            Dim k As Integer
+
+            Dim lvitemz As ListViewItem
+
+            If dt12121.Rows.Count <> 0 Then
+
+                For k = 0 To dt12121.Rows.Count
+
+                    lvitemz = lvTrialBalance.Items.Add(dt12121.Rows(k).Item(0))
+                    lvitemz.SubItems.Add(dt12121.Rows(k).Item(1))
+                    lvitemz.SubItems.Add(dt12121.Rows(k).Item(2))
+
+                    k += 1
+                Next
+
+            Else
+
+            End If
+
+            Dim lvitemx As ListViewItem
+            Dim total As Double
+
+
+            For Each lvitemx In lvTrialBalance.Items
+
+                total += CDbl(lvitemx.SubItems(2).Text)
+
+            Next
+
+            lblTotal.Text = "Php " & FormatNumber(total)
+
+
+        Catch ex As Exception
+
+            MsgBox("catch 6")
+            MessageBox.Show(ex.Message)
+
+        Finally
+
+            sqlcon.Close()
+
+        End Try
+    End Sub
+
+    Private Sub MaterialFlatButton4_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton4.Click
+        Try
+            TextBox1.Text = dtpFromJE.Value
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+
+            Dim dt4 As New DataTable
+            '  select date, sum(total_price)  from bill  where Date BETWEEN '" &  startDate.ToString("yyyy/MM/dd") & "' AND '" & endDate.ToString("yyyy/MM/dd") & "' GROUP BY date;"
+            qry = "Select journalentry.source as Source,journalentry.source2 as 'Referrence' ,journalentry.journaldate as Date,chartofaccounts.accountname as 'Account Name',journalentry.journaldebit as Debit,journalentry.journalcredit as Credit from journalentry inner join chartofaccounts on journalentry.accountid = chartofaccounts.accountid where journalentry.journaldate BETWEEN '" & dtpFromJE.Value.ToString("yyyy-MM-dd") & "' AND '" & dtpToJE.Value.ToString("yyyy-MM-dd") & "' order by journalentry.journaldate asc, journalentry.source"
+            MsgBox(dtpFromJE.Value)
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt4)
+
+            dgvJournalE.DataSource = dt4
+
+            dgvJournalE.Columns(0).DefaultCellStyle.Format = "dd-MM-yyyy"
+            dgvJournalE.Columns(3).DefaultCellStyle.Format = "###,###.##"
+            dgvJournalE.Columns(4).DefaultCellStyle.Format = "###,###.##"
+
+
+        Catch ex As Exception
+
+            MsgBox("catch 7")
+            MessageBox.Show(ex.Message)
+
+        Finally
+
+            sqlcon.Close()
+
+        End Try
+
+    End Sub
+
+    Private Sub MaterialFlatButton6_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton6.Click
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+
+            Dim qry As String
+            Dim dtCur As New DataTable
+
+            qry = "select chartofaccounts.accountcode as 'Account Code', chartofaccounts.accountname as 'Account Name', ifnull(sum(journalentry.journaldebit) - sum(journalentry.journalcredit),0) as Balance " &
+                 " from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid " &
+                 " where chartofaccounts.accountgroup ='Current Assets' group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dtCur)
+
+            Dim j As Integer
+            Dim subtot As Double
+
+            subtot = 0
+
+            While j <= dtCur.Rows.Count - 1
+
+                subtot += CDbl(dtCur.Rows(j).Item(2))
+
+                j += 1
+            End While
+
+            lblTotalCur.Text = FormatNumber(subtot)
+
+            dgvCurrentAssets.DataSource = dtCur
+            dgvCurrentAssets.Columns(2).DefaultCellStyle.Format = "###,###.##"
+
+            Dim qry1 As String
+            Dim dtnNonCur As New DataTable
+
+            qry1 = "select chartofaccounts.accountcode as 'Account Code', chartofaccounts.accountname as 'Account Name', ifnull(sum(journalentry.journaldebit) - sum(journalentry.journalcredit),0) as Balance " &
+               " from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid " &
+               " where chartofaccounts.accountgroup ='Noncurrent Assets' group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+            sqlda = New MySqlDataAdapter(qry1, sqlcon)
+            sqlda.Fill(dtnNonCur)
+
+            Dim k As Integer
+            Dim noncursubtot As Double
+
+            noncursubtot = 0
+
+            While k <= dtnNonCur.Rows.Count - 1
+
+                noncursubtot += CDbl(dtnNonCur.Rows(k).Item(2))
+
+                k += 1
+
+            End While
+
+            lblTotalNCur.Text = FormatNumber(noncursubtot)
+
+            dgvNonCurrent.DataSource = dtnNonCur
+            dgvNonCurrent.Columns(2).DefaultCellStyle.Format = "###,###.##"
+
+            Dim qry2 As String
+            Dim dtliabilities As New DataTable
+
+            qry2 = "select chartofaccounts.accountcode as 'Account Code', chartofaccounts.accountname as 'Account Name', ifnull(sum(journalentry.journaldebit) - sum(journalentry.journalcredit),0) as Balance " &
+              " from chartofaccounts inner join journalentry on chartofaccounts.accountid = journalentry.accountid " &
+              " where chartofaccounts.accountgroup ='Liabilities'  or chartofaccounts.accountgroup ='Equity'  group by chartofaccounts.accountcode, chartofaccounts.accountname"
+
+            ''
+
+            sqlda = New MySqlDataAdapter(qry2, sqlcon)
+            sqlda.Fill(dtliabilities)
+
+            Dim u As Integer
+            Dim subtotliab As Double
+            subtotliab = 0
+
+            While u <= dtliabilities.Rows.Count - 1
+
+                subtotliab += CDbl(dtliabilities.Rows(u).Item(2))
+                u += 1
+
+            End While
+
+            lblTotalLiab.Text = FormatNumber(subtotliab)
+            dgvLiabilitiesEq.DataSource = dtliabilities
+            dgvLiabilitiesEq.Columns(2).DefaultCellStyle.Format = "###,###,###.##"
+
+        Catch ex As Exception
+
+            MsgBox("catch 8")
+            MessageBox.Show(ex.Message)
+
+        Finally
+            sqlcon.Close()
+
+
+        End Try
+    End Sub
+
+
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Me.Close()
+
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        Me.WindowState = FormWindowState.Minimized
+
+    End Sub
+
+    Private Sub MaterialFlatButton2_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton2.Click
+        Dim sTitle2 As String
+        sTitle2 = cmbReportType.selectedValue
+        Dim frm2 As New viewreportlegder(sTitle2)
+        frm2.Show()
+    End Sub
+
+
+
+    Private Sub MaterialFlatButton7_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton7.Click
+        Dim sTitle3 As String
+        sTitle3 = TextBox1.Text
+        Dim frm3 As New viewreporttrialbalance(sTitle3)
+        frm3.Show()
+    End Sub
+
+    Private Sub MaterialFlatButton8_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton8.Click
+        Dim sTitle4 As String
+        sTitle4 = TextBox1.Text
+        Dim frm4 As New viewreportbalance(sTitle4)
+        frm4.Show()
+    End Sub
+
+    Private Sub MaterialFlatButton9_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton9.Click
+
+        Dim sTitle5 As String
+        sTitle5 = TextBox1.Text
+        Dim frm5 As New viewreportincome(sTitle5)
+        frm5.Show()
+
+    End Sub
+
+    Private Sub frmReports_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        frmMain.Enabled = True
+        frmMain.Focus()
+
+    End Sub
+
+    Private Sub MaterialFlatButton10_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton10.Click
+        Dim sTitle9 As String
+        sTitle9 = TextBox2.Text
+        Dim frm9 As New viewreportgeneraljournal(sTitle9)
+        frm9.Show()
+    End Sub
+
+    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
+
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles totgross.Click
+
+    End Sub
+
+    Private Sub TabPage3_Click(sender As Object, e As EventArgs) Handles TabPage3.Click
+
+    End Sub
+
+    Private Sub dgvincomestatement_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvincomestatement.CellContentClick
+
+    End Sub
+
+    Private Sub lblTotal_Click(sender As Object, e As EventArgs) Handles lblTotal.Click
+
+    End Sub
+End Class

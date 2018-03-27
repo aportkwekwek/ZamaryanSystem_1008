@@ -1,0 +1,251 @@
+﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data
+Public Class frmSuppliers
+
+    Dim sqlcon As New MySqlConnection
+    Dim sqlda As New MySqlDataAdapter
+    Dim sqlcmd As New MySqlCommand
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Me.Close()
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub frmSuppliers_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        frmMain.Enabled = True
+        frmMain.Focus()
+
+    End Sub
+
+    Private Sub frmSuppliers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Timer1.Start()
+
+    End Sub
+
+    Private Sub MaterialFlatButton1_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton1.Click
+        Me.Close()
+
+    End Sub
+
+    Private Sub MaterialFlatButton4_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton4.Click
+
+        Try
+
+            Dim isInventory As Integer
+
+            If chkInventorySupplier.Checked = True Then
+                isInventory = 1
+            Else
+                isInventory = 0
+            End If
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+            Dim dt As New DataTable
+
+
+            qry = "Select *  from suppliers where suppliername ='" & txtSname.Text & "'"
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt)
+
+            If dt.Rows.Count = 1 Then
+                MessageBox.Show("Supplier exists in the database", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                sqlcon.Close()
+                Exit Sub
+            End If
+
+            Dim qry2 As String
+
+            qry2 = "Insert into suppliers(suppliername,supplieraddress,supplierzip,supplierphone,supplierfax,supplierwebsite,suppliercontactperson,supplieremail,suppliertin,termsofAgreement,vendorTax,InventorySupplier) values ('" &
+                txtSname.Text & "','" & txtSaddress.Text & "','" & txtSzip.Text & "','" & txtsNumber.Text & "','" & txtSFax.Text & "','" & txtSWebsite.Text & "','" & txtSCperson.Text & "','" & txtSEmail.Text & "','" & txtSTin.Text & "','" & txtSTerms.Text & "','" & txtSTax.Text & "','" & isInventory & "')"
+            sqlcmd = New MySqlCommand(qry2, sqlcon)
+            sqlcmd.ExecuteNonQuery()
+
+            MessageBox.Show("Information successfully uploaded!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            btnClearItem.PerformClick()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
+
+    Private Sub btnClearItem_Click(sender As Object, e As EventArgs) Handles btnClearItem.Click
+
+        txtSaddress.Clear()
+        txtSCperson.Clear()
+        txtSEmail.Clear()
+        txtSFax.Clear()
+        txtSname.Clear()
+        txtsNumber.Clear()
+        txtSTax.Clear()
+        txtSTerms.Clear()
+        txtSTin.Clear()
+        txtSWebsite.Clear()
+        txtSzip.Clear()
+
+    End Sub
+
+    Private Sub MaterialFlatButton2_Click(sender As Object, e As EventArgs) Handles MaterialFlatButton2.Click
+        lvSuppliers.Items.Clear()
+
+        Try
+
+            sqlcon.ConnectionString = strconnection()
+            sqlcon.Open()
+
+            Dim qry As String
+            Dim dt As New DataTable
+            Dim i As Integer
+
+            qry = "Select suppliername,supplieraddress,supplierphone,supplierfax,suppliercontactperson,suppliertin from suppliers"
+
+            sqlda = New MySqlDataAdapter(qry, sqlcon)
+            sqlda.Fill(dt)
+
+            While i <= dt.Rows.Count - 1
+
+                Dim itm As ListViewItem
+
+                itm = lvSuppliers.Items.Add(dt.Rows(i).Item(0))
+                itm.SubItems.Add(dt.Rows(i).Item(1))
+                itm.SubItems.Add(dt.Rows(i).Item(2))
+                itm.SubItems.Add(dt.Rows(i).Item(3))
+                itm.SubItems.Add(dt.Rows(i).Item(4))
+                itm.SubItems.Add(dt.Rows(i).Item(5))
+
+                i += 1
+
+            End While
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlcon.Close()
+
+
+        End Try
+    End Sub
+
+   
+
+    Private Sub MaterialFlatButton3_Click(sender As Object, e As EventArgs)
+
+
+       
+
+    End Sub
+
+    Private Sub cmbsupplierbilling_onItemSelected(sender As Object, e As EventArgs)
+
+      
+
+    End Sub
+
+
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
+    End Sub
+
+   
+    Private Sub MaterialFlatButton5_Click(sender As Object, e As EventArgs)
+
+
+        
+
+    End Sub
+
+    Private Sub btnpaid_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub dgvUnpaidBalance_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs)
+
+    End Sub
+
+    Private Sub txtSzip_Click(sender As Object, e As EventArgs) Handles txtSzip.Click
+
+    End Sub
+
+    Private Sub txtSzip_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSzip.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtsNumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsNumber.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtSFax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSFax.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtSTax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSTax.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtSCperson_Click(sender As Object, e As EventArgs) Handles txtSCperson.Click
+
+    End Sub
+
+    Private Sub txtSCperson_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSCperson.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+                'Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub txtSTerms_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSTerms.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 8
+            Case 13
+            Case 46 To 58
+            Case Else
+                e.KeyChar = Nothing
+
+        End Select
+    End Sub
+
+    Private Sub TabPage3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+End Class
